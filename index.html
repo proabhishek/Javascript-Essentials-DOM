@@ -1,0 +1,52 @@
+<!DOCTYPE html> 
+
+<html>
+
+  <head>
+     <title> First Dom Project </title>
+  </head>
+
+  <body>
+       Name: <input type="text" value="Abhishek">
+       <button> Greet Me</button>
+       <div id="message"></div>
+       <!-- <button> Greet Me 2</button>
+       <button> Greet Me 3</button> -->
+       
+       <script>
+             input = document.querySelector("input")
+             button = document.querySelector("button")
+             message = document.querySelector("#message")
+
+
+            // get current time 
+             function  greetMessage(){
+                date = new Date()
+                hour = date.getHours()
+                
+                if(hour < 12){
+                    return "Good Morning"
+                }
+                else if(hour >= 12 && hour <= 17){
+                    return "Good Afternoon"
+                }
+                else{
+                    return "Good Evening"
+                }
+
+             }
+      
+             button.addEventListener("click", sayHello )
+
+             function sayHello(){
+                 message.innerText = "Hey " + input.value +" "+ greetMessage()
+             }
+
+       </script>
+
+
+ </body>
+
+
+
+</html>
