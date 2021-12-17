@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dice Game - Sakuni</title>
+</head>
+<body>
+    
+   Person 1: <input type="text" value="Kruto">
+   <button class="dice" id ="1">Roll the dice</button> 
+   Result: <span> </span> <br> <br>
+
+   Person 2: <input type="text" value="Chandu">
+   <button class="dice" id ="2">Roll the dice</button> 
+   Result: <span> </span> <br> <br>
+
+   Person 3: <input type="text" value="Yogita">
+   <button class="dice" id ="3">Roll the dice</button> 
+   Result: <span> </span> <br> <br>
+
+   Person 4: <input type="text" value="Vijay">
+   <button class="dice" id ="4">Roll the dice</button> 
+   Result: <span> </span> <br> <br>
+
+   Person 5: <input type="text" value="Abhishek">
+   <button class="dice" id ="5">Roll the dice</button> 
+   Result: <span> </span> <br> <br>
+
+   <button id="endgame"> End Game</button> 
+   <div id="winMessage"></div>
+
+   <script> 
+
+   let person, button , results, endButton, winMessage
+   person = document.querySelectorAll("input")
+   button = document.querySelectorAll(".dice")
+   results = document.querySelectorAll("span")
+   endButton = document.querySelector("#endgame")
+   winMessage = document.querySelector("#winMessage")
+
+//    endButton.disabled = false
+   
+   // identify clicks 
+    let i
+   for( i = 0; i<button.length; i=i+1){
+       button[i].addEventListener("click", rollDice)
+   }
+
+   function rollDice(e){
+       user_id = e.target.id
+       dice_options = [1,2,3,4,5,6] 
+       random = parseInt(Math.random()* dice_options.length) 
+       dice_results = dice_options[random]
+       results[user_id - 1].innerText = dice_results
+   }
+   
+   endButton.addEventListener("click", shoutWinner)
+
+   function shoutWinner(){
+       max = 0, pos = 0
+        for(i = 0; i<=4; i++){
+            if(results[i].innerText > max ){
+                max = results[i].innerText
+                pos = i
+            }
+        }
+         winMessage.innerText = "The winner is "+person[pos].value + 
+         " as he scored " + max
+
+   }
+
+
+
+  </script>
+
+
+
+
+</body>
+</html>
