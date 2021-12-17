@@ -37,16 +37,21 @@
    endButton = document.querySelector("#endgame")
    winMessage = document.querySelector("#winMessage")
 
-//    endButton.disabled = false
+    endButton.disabled = true
    
    // identify clicks 
     let i
    for( i = 0; i<button.length; i=i+1){
        button[i].addEventListener("click", rollDice)
    }
-
+   let click = 0
    function rollDice(e){
+       click = click +1 
+       if(click == 5){
+        endButton.disabled = false
+       }
        user_id = e.target.id
+       button[user_id - 1].disabled = true
        dice_options = [1,2,3,4,5,6] 
        random = parseInt(Math.random()* dice_options.length) 
        dice_results = dice_options[random]
@@ -56,6 +61,7 @@
    endButton.addEventListener("click", shoutWinner)
 
    function shoutWinner(){
+    endButton.disabled = true
        max = 0, pos = 0
         for(i = 0; i<=4; i++){
             if(results[i].innerText > max ){
